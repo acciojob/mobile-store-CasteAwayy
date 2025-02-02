@@ -20,7 +20,7 @@ function ProductList({ products }) {
       <h1 className="text-xl font-bold">Product List</h1>
       <ul>
         {products.map((product) => (
-          <li key={product.id} className="btn">
+          <li key={product.id}>
             <Link to={`/products/${product.id}`}>
               {product.name} <button className="btn">Buy</button>
             </Link>
