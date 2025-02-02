@@ -20,16 +20,14 @@ function ProductList({ products }) {
       <h1 className="text-xl font-bold">Product List</h1>
       <ul>
         {products.map((product) => (
-          <li key={product.id} className="mt-2">
-            <Link to={`/products/${product.id}`} className="text-blue-600">
+          <li key={product.id}>
+            <Link to={`/products/${product.id}`} className="btn">
               {product.name}
             </Link>
           </li>
         ))}
       </ul>
-      <Link to="/admin" className="block mt-4 text-red-600">
-        Go to Admin
-      </Link>
+      <Link to="/admin">Go to Admin</Link>
     </div>
   );
 }
@@ -118,7 +116,7 @@ function App() {
         />
       </Routes>
     </Router>
-    </div>
+            </div>
   );
 }
 
