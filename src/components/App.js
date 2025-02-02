@@ -20,10 +20,8 @@ function ProductList({ products }) {
       <h1 className="text-xl font-bold">Product List</h1>
       <ul>
         {products.map((product) => (
-          <li key={product.id}>
-            <Link to={`/products/${product.id}`} className="btn">
-              {product.name}
-            </Link>
+          <li key={product.id} className="btn">
+            <Link to={`/products/${product.id}`}>{product.name}</Link>
           </li>
         ))}
       </ul>
@@ -103,20 +101,20 @@ function App() {
 
   return (
     <div>
-    <Router>
-      <Routes>
-        <Route path="/" element={<ProductList products={products} />} />
-        <Route
-          path="/products/:id"
-          element={<ProductDetail products={products} />}
-        />
-        <Route
-          path="/admin"
-          element={<Admin products={products} setProducts={setProducts} />}
-        />
-      </Routes>
-    </Router>
-            </div>
+      <Router>
+        <Routes>
+          <Route path="/" element={<ProductList products={products} />} />
+          <Route
+            path="/products/:id"
+            element={<ProductDetail products={products} />}
+          />
+          <Route
+            path="/admin"
+            element={<Admin products={products} setProducts={setProducts} />}
+          />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 
