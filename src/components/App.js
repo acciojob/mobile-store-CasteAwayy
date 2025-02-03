@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   BrowserRouter,
   Route,
@@ -8,7 +7,6 @@ import {
   NavLink,
 } from "react-router-dom";
 
-import styles from "./App.module.css";
 
 const products = [
   { id: 1, name: "Mobile 1", description: "Description 1", price: "$200" },
@@ -35,7 +33,8 @@ function AdminProdcut() {
 
 function Home() {
   return (
-    <div className='col-12'>
+    <div className="col-12">
+      <PageNav />
       {products.map((item) => (
         <div>
           <Link key={item.id} to={`/products/${item.id}`}>
@@ -46,6 +45,7 @@ function Home() {
     </div>
   );
 }
+
 function Product() {
   const { id } = useParams();
 
@@ -88,12 +88,11 @@ function PageNav() {
 function App() {
   return (
     <BrowserRouter>
-      <PageNav />
       <Routes>
         <Route index element={<Home />} />
         {/* <Route path="admin" element={<Admin />} /> */}
-        <Route path="/products/:id" element={<Product />} />
-        <Route path="/admin/products/:id" element={<AdminProdcut />} />
+        <Route path="products/:id" element={<Product />} />
+        <Route path="admin/products/:id" element={<AdminProdcut />} />
       </Routes>
     </BrowserRouter>
   );
