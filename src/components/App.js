@@ -82,7 +82,7 @@ function App() {
       <PageNav />
       <Routes>
         <Route index element={<Home />} />
-        <Route path="/admin" element={<Admin />} />
+       {/* <Route path="admin" element={<Admin />} /> */}
         <Route path="/products/:id" element={<Product />} />
         <Route path="/admin/products/:id" element={<AdminProdcut />} />
       </Routes>
