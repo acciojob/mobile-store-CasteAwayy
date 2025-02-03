@@ -69,11 +69,9 @@ function Admin() {
       <PageNav />
       <h1>Admin Panel</h1>
       {products.map((item) => (
-        <div>
           <NavLink key={item.id} to={`products/${item.id}`}>
             {item.name}
           </NavLink>
-        </div>
       ))}
     </>
   );
