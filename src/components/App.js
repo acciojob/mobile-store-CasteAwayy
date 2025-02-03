@@ -36,9 +36,11 @@ function AdminProdcut() {
 function Home() {
   return (
     <div className={styles.homeContainer}>
-        <Link to={`/products/${products[4].id}`} className="btn">
-          {products[4].name} <button>Buy</button>
+      {products.map((item) => (
+        <Link key={item.id} to={`/products/${item.id}`}>
+          {item.name} <button>Buy</button>
         </Link>
+      ))}
     </div>
   );
 }
