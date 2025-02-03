@@ -35,7 +35,7 @@ function AdminProdcut() {
 
 function Home() {
   return (
-    <div className={styles.homeContainer}>
+    <div className={`col-12 ${styles.homeContainer}`}>
       {products.map((item) => (
         <div>
           <Link key={item.id} to={`/products/${item.id}`}>
@@ -46,7 +46,6 @@ function Home() {
     </div>
   );
 }
-
 function Product() {
   const { id } = useParams();
 
