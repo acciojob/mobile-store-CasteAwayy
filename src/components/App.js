@@ -34,16 +34,18 @@ function AdminProdcut() {
 
 function Home() {
   return (
-    <div className="col-12">
+    <>
       <PageNav />
-      {products.map((item) => (
+      <div className="col-12">
         <div>
-          <Link key={item.id} to={`/products/${item.id}`}>
-            {item.name} <button>Buy</button>
-          </Link>
+          {products.map((item) => (
+            <Link key={item.id} to={`/products/${item.id}`}>
+              {item.name} <button>Buy</button>
+            </Link>
+          ))}
         </div>
-      ))}
-    </div>
+      </div>
+    </>
   );
 }
 
