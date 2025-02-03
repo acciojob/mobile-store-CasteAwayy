@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {
   BrowserRouter,
   Route,
@@ -7,7 +8,6 @@ import {
   Link,
   NavLink,
 } from "react-router-dom";
-
 
 const products = [
   { id: 1, name: "Mobile 1", description: "Description 1", price: "$200" },
@@ -63,6 +63,7 @@ function Product() {
 function Admin() {
   return (
     <>
+      <PageNav />
       <h1>Admin Panel</h1>
       <div className="col-12">
         {products.map((item) => (
@@ -91,7 +92,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route index element={<Home />} />
-        {/* <Route path="admin" element={<Admin />} /> */}
+        <Route path="admin" element={<Admin />} />
         <Route path="products/:id" element={<Product />} />
         <Route path="admin/products/:id" element={<AdminProdcut />} />
       </Routes>
