@@ -78,8 +78,22 @@ function Admin() {
 
 function PageNav() {
   return (
-    <div className="col-12" style={{width:'50rem' , margin: '0 auto', display: "flex" , justifyContent: 'space-evenly'}}>
+    <div
+      className="col-12"
+      style={{
+        width: "50rem",
+        margin: "0 auto",
+        display: "flex",
+        justifyContent: "space-evenly",
+      }}
+    >
       <div>
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="admin">Admin</NavLink>
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="admin">Admin</NavLink>
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="admin">Admin</NavLink>
         <NavLink to="/">Home</NavLink>
         <NavLink to="admin">Admin</NavLink>
       </div>
