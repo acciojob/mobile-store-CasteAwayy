@@ -35,7 +35,7 @@ function AdminProdcut() {
 
 function Home() {
   return (
-    <div className={`col-12 ${styles.homeContainer}`}>
+    <div className='col-12'>
       {products.map((item) => (
         <div>
           <Link key={item.id} to={`/products/${item.id}`}>
@@ -61,16 +61,18 @@ function Product() {
 
 function Admin() {
   return (
-    <div>
+    <>
       <h1>Admin Panel</h1>
-      <div className="col-12">
+      <div className='col-12'>
+      {products.map((item) => (
         <div>
-          <Link to={`/admin/products/${products[0].id}`}>
-            {products[0].name}
+          <Link key={item.id} to={`admin/products/${item.id}`}>
+            {item.name}
           </Link>
         </div>
-      </div>
+      ))}
     </div>
+    </>
   );
 }
 
