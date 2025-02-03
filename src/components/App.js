@@ -51,12 +51,15 @@ function Product() {
   const { id } = useParams();
 
   return (
-    <div>
-      <h1>Product {id} </h1>
-      <Link to="/">
-        <button className="btn">Other Products</button>
-      </Link>
-    </div>
+    <>
+      <PageNav />
+      <div>
+        <h1>Product {id} </h1>
+        <Link to="/">
+          <button className="btn">Other Products</button>
+        </Link>
+      </div>
+    </>
   );
 }
 
@@ -65,13 +68,13 @@ function Admin() {
     <>
       <PageNav />
       <h1>Admin Panel</h1>
-        {products.map((item) => (
-          <div>
-            <NavLink key={item.id} to={`products/${item.id}`}>
-              {item.name}
-            </NavLink>
-          </div>
-        ))}
+      {products.map((item) => (
+        <div>
+          <NavLink key={item.id} to={`products/${item.id}`}>
+            {item.name}
+          </NavLink>
+        </div>
+      ))}
     </>
   );
 }
@@ -80,7 +83,7 @@ function PageNav() {
   return (
     <>
       <NavLink to="/">Home</NavLink>
-      <NavLink to="admin">Admin</NavLink>
+      <NavLink to="/admin">Admin</NavLink>
     </>
   );
 }
