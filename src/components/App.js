@@ -1,110 +1,103 @@
-import React, { useState } from "react";
 import {
-  BrowserRouter as Router,
-  Routes,
+  BrowserRouter,
   Route,
-  Link,
+  Routes,
   useParams,
-  useNavigate,
+  Link,
+  NavLink,
 } from "react-router-dom";
 
-const productsData = [
-  { id: 1, name: "Product 1", description: "Mobile 1 Description" },
-  { id: 2, name: "Product 2", description: "Mobile 2 Description" },
-  { id: 3, name: "Product 3", description: "Mobile 3 Description" },
+import styles from "./App.module.css";
+
+const products = [
+  { id: 1, name: "Mobile 1", description: "Description 1", price: "$200" },
+  { id: 2, name: "Mobile 2", description: "Description 2", price: "$300" },
+  { id: 3, name: "Mobile 3", description: "Description 3", price: "$400" },
+  { id: 4, name: "Mobile 4", description: "Description 3", price: "$400" },
+  { id: 5, name: "Mobile 5", description: "Description 3", price: "$400" },
 ];
 
-function ProductList() {
+function AdminProdcut() {
+  const { id } = useParams();
+
   return (
     <div>
-      <h1>Product List</h1>
-      <ul>
-        {productsData.map((product) => (
-          <li key={product.id}>
-            {product.name}
-            <Link to={`/products/${product.id}`}>
-              <button className="btn">Buy</button>
-            </Link>
-          </li>
-        ))}
-      </ul>
-      <Link to="/admin">Go to Admin</Link>
+      <p>Product {id}</p>
+      <input name="title" id="title" />
+
+      <button>Delete</button>
+      <button>Save</button>
     </div>
   );
 }
 
-function ProductDetail() {
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const product = productsData.find((prod) => prod.id === parseInt(id));
+function Home() {
+  return (
+    <div className={styles.homeContainer}>
+      {products.map((item) => (
+        <Link key={item.id} to={`/products/${item.id}`}>
+          {item.name} <button className="btn">Buy</button>
+        </Link>
+      ))}
+    </div>
+  );
+}
 
-  if (!product) return <h2>Product not found</h2>;
+function Product() {
+  const { id } = useParams();
 
   return (
     <div>
-      <h1>{product.name}</h1>
-      <p>{product.description}</p>
-      <button
-        onClick={() => {
-          alert(`Product ${product.name} deleted.`);
-          navigate("/admin");
-        }}
-      >
-        Delete Product
-      </button>
-      <br />
-      <Link to="/admin">Go to Admin</Link>
+      <h1>Product {id} </h1>
+      <Link to="/">
+        <button className="btn">Other Products</button>
+      </Link>
     </div>
   );
 }
 
 function Admin() {
-  const [products, setProducts] = useState(productsData);
-
-  const handleDelete = (id) => {
-    setProducts(products.filter((product) => product.id !== id));
-  };
-
-  const handleEdit = (id) => {
-    const newName = prompt("Enter new product name:");
-    const newDescription = prompt("Enter new product description:");
-    setProducts(
-      products.map((product) =>
-        product.id === id
-          ? { ...product, name: newName, description: newDescription }
-          : product
-      )
-    );
-  };
-
   return (
     <div>
       <h1>Admin Panel</h1>
       <ul>
-        {products.map((product) => (
-          <li key={product.id}>
-            {product.name} - {product.description}
-            <button onClick={() => handleEdit(product.id)}>Edit</button>
-            <button onClick={() => handleDelete(product.id)}>Delete</button>
+        {products.map((item) => (
+          <li>
+            <Link key={item.id} to={`/admin/products/${item.id}`}>
+              {item.name}
+            </Link>
           </li>
         ))}
+        {/* <p key={products[0].id}>
+          <Link to={`/admin/products/${products[0].id}`}>
+            {products[0].name} - ${products[0].price}
+          </Link>
+        </p> */}
       </ul>
-      <Link to="/">Back to Products</Link>
     </div>
+  );
+}
+
+function PageNav() {
+  return (
+    <header className={styles.header}>
+      <NavLink to="/">Home</NavLink>
+      <NavLink to="/admin">Admin</NavLink>
+    </header>
   );
 }
 
 function App() {
   return (
-    <div>
-    <Router>
+    <BrowserRouter>
+      <PageNav />
       <Routes>
-        <Route path="/" element={<ProductList />} />
-        <Route path="/products/:id" element={<ProductDetail />} />
+        <Route index element={<Home />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/products/:id" element={<Product />} />
+        <Route path="/admin/products/:id" element={<AdminProdcut />} />
       </Routes>
-    </Router>
-  </div>
+    </BrowserRouter>
   );
 }
 
