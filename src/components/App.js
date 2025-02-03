@@ -62,13 +62,7 @@ function Admin() {
   return (
     <div>
       <h1>Admin Panel</h1>
-      <div>
-        {products.map((item) => (
-          <Link key={item.id} to={`/admin/products/${item.id}`}>
-            <div>{item.name}</div>
-          </Link>
-        ))}
-      </div>
+      <Link to={`/admin/products/${products[0].id}`}>{products[0].name}</Link>
     </div>
   );
 }
