@@ -65,7 +65,6 @@ function Admin() {
     <>
       <PageNav />
       <h1>Admin Panel</h1>
-      <div className="col-12">
         {products.map((item) => (
           <div>
             <NavLink key={item.id} to={`products/${item.id}`}>
@@ -73,7 +72,6 @@ function Admin() {
             </NavLink>
           </div>
         ))}
-      </div>
     </>
   );
 }
