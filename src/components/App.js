@@ -63,41 +63,25 @@ function Admin() {
   return (
     <>
       <h1>Admin Panel</h1>
-      <div className='col-12'>
-      {products.map((item) => (
-        <div>
-          <Link key={item.id} to={`admin/products/${item.id}`}>
-            {item.name}
-          </Link>
-        </div>
-      ))}
-    </div>
+      <div className="col-12">
+        {products.map((item) => (
+          <div>
+            <NavLink key={item.id} to={`products/${item.id}`}>
+              {item.name}
+            </NavLink>
+          </div>
+        ))}
+      </div>
     </>
   );
 }
 
 function PageNav() {
   return (
-    <div
-      className="col-12"
-      style={{
-        width: "50rem",
-        margin: "0 auto",
-        display: "flex",
-        justifyContent: "space-evenly",
-      }}
-    >
-      <div>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="admin">Admin</NavLink>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="admin">Admin</NavLink>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="admin">Admin</NavLink>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="admin">Admin</NavLink>
-      </div>
-    </div>
+    <>
+      <NavLink to="/">Home</NavLink>
+      <NavLink to="admin">Admin</NavLink>
+    </>
   );
 }
 
