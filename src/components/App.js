@@ -64,7 +64,13 @@ function Admin() {
   return (
     <div>
       <h1>Admin Panel</h1>
-      <Link to={`/admin/products/${products[0].id}`}>{products[0].name}</Link>
+      <div className="col-12">
+        <div>
+          <Link to={`/admin/products/${products[0].id}`}>
+            {products[0].name}
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }
@@ -84,7 +90,7 @@ function App() {
       <PageNav />
       <Routes>
         <Route index element={<Home />} />
-       {/* <Route path="admin" element={<Admin />} /> */}
+        <Route path="admin" element={<Admin />} />
         <Route path="/products/:id" element={<Product />} />
         <Route path="/admin/products/:id" element={<AdminProdcut />} />
       </Routes>
